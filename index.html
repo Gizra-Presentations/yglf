@@ -82,7 +82,7 @@
 module Counter exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (style)
+import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 
 -- MODEL
@@ -132,6 +132,48 @@ view model =
 
 				</code></pre>
 			</section>
+
+			<section>
+				<h3>Elm Architecture</h3>
+				<aside class="notes" data-markdown>
+					* Set of best practices
+					* How to structure your application
+					* How to connect components
+					* Model -> Update -> View
+					* Consists of a few prinicpels
+				</aside>
+			</section>
+
+			<section>
+        <div>
+          <h3>Principle 1: Single source of truth</h3>
+          <small>The state of your whole application is stored in a record tree</small>
+        </div>
+
+				<aside class="notes" data-markdown>
+					* Saw first time it resonated
+					* Angular 1 - where is your state? Router. Services.
+					* Async nature of JS
+					* Condition of your webapp
+					* In case of bugs, hard to reproduce
+					* Maybe counter intiutive (seperation of concerns) - control webapp
+		    </aside>
+      </section>
+
+      <section>
+        <div>
+          <h3>Principle 2: State is read-only</h3>
+          <small>The only way to mutate the state is to emit an action describing what happened</small>
+        </div>
+
+				<aside class="notes" data-markdown>
+					* It's 2016. The root of all evil in this worlds. heart worming, positive, non-cynical,
+					  world  - 2 way data binding
+					* Angular 1 site - Save me so many jQuery lines
+					* What made us love it, is what we now hate
+					* If view changes model, chain of actions. Can't control state
+		    </aside>
+      </section>
 
 			<!-- Last slide -->
 			<section data-background="https://cloud.githubusercontent.com/assets/125707/13070800/cf27ec14-d497-11e5-82e3-7cb9c73fe6be.jpg" class="present">
