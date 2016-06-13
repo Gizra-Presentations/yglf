@@ -77,6 +77,62 @@
 				</ul>
 			</section>
 
+			<section>
+				<pre style="width: 100%;"><code data-trim class>
+module Counter exposing (..)
+
+import Html exposing (..)
+import Html.Attributes exposing (style)
+import Html.Events exposing (onClick)
+
+-- MODEL
+
+type alias Model =
+    Int
+
+initialModel : Model
+initialModel =
+    0
+
+init : ( Model, Cmd Msg )
+init =
+    ( initialModel
+    , Cmd.none
+    )
+
+-- UPDATE
+
+type Msg
+    = Decrement
+    | Increment
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update action model =
+    case action of
+        Decrement ->
+            ( model - 1
+            , Cmd.none
+            )
+
+        Increment ->
+            ( model + 1
+            , Cmd.none
+            )
+
+-- VIEW
+
+view : Model -> Html Msg
+view model =
+    div []
+        [ button [ onClick Decrement ] [ text "-" ]
+        , div [] [ text (toString model) ]
+        , button [ onClick Increment ] [ text "+" ]
+        ]
+
+				</code></pre>
+			</section>
+
 			<!-- Last slide -->
 			<section data-background="https://cloud.githubusercontent.com/assets/125707/13070800/cf27ec14-d497-11e5-82e3-7cb9c73fe6be.jpg" class="present">
 				<span style="background-color: black; opacity: 0.85; padding: 20px 40px;">
