@@ -399,6 +399,87 @@ emptyModel =
 				</aside>
 			</section>
 
+			<section>
+				<h2>But we can do better</h2>
+			</section>
+
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+{-|
+  * `NotAsked` - We haven't asked for the data yet.
+  * `Loading` - We've asked, but haven't got an answer yet.
+  * `Failure` - We asked, but something went wrong. Here's the error.
+  * `Success` - Everything worked, and here's the data.
+-}
+type RemoteData e a
+    = NotAsked
+    | Loading
+    | Failure e
+    | Success a
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+				</aside>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+{-|
+  * `NotAsked` - We haven't asked for the data yet.
+  * `Loading` - We've asked, but haven't got an answer yet.
+  * `Failure` - We asked, but something went wrong. Here's the error.
+  * `Success` - Everything worked, and here's the data.
+-}
+type RemoteData e a
+    = NotAsked
+    | Loading
+    | Failure e
+    | Success a
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+				</aside>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type alias WebData a =
+    RemoteData Http.Error a
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+				</aside>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type alias Model =
+    { activePage : Page
+    , user : WebData User
+    }
+
+
+emptyModel =
+    { activePage = Login
+    , user = NotAsked
+    }
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+					* Using webdata, starting with NotAsked
+				</aside>
+			</section>
+
+
 
 			<!-- Last slide -->
 			<section data-background="https://cloud.githubusercontent.com/assets/125707/13070800/cf27ec14-d497-11e5-82e3-7cb9c73fe6be.jpg" class="present">
