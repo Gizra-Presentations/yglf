@@ -180,7 +180,7 @@ type alias User =
     , name : String
     }
 
-viewAvatar : String
+viewAvatar : String -> Html a
 viewAvatar url =
     img [ src url ] []
 
@@ -203,7 +203,7 @@ type alias User =
     , name : String
     }
 
-viewAvatar : String
+viewAvatar : String -> Html a
 viewAvatar url =
     img [ src url ] []
 
@@ -262,7 +262,7 @@ type alias User =
     , name : String
     }
 
-viewAvatar : String
+viewAvatar : String -> Html a
 viewAvatar url =
     img [ src url ] []
 
@@ -285,7 +285,7 @@ type alias User =
     , name : String
     }
 
-viewAvatar : Url
+viewAvatar : Url -> Html a
 viewAvatar url =
     let
         (Url val) = url
@@ -305,7 +305,7 @@ type alias User =
     , name : String
     }
 
-viewAvatar : Url
+viewAvatar : Url -> Html a
 viewAvatar (Url val) =
     img [ src val ] []
 
@@ -313,6 +313,10 @@ viewAvatar (Url val) =
 --
 					</code>
 				</pre>
+			</section>
+
+			<section>
+				<img src="https://cloud.githubusercontent.com/assets/125707/16045523/727ba1c8-3251-11e6-8707-1cfb30ba4173.jpg" alt="" />
 			</section>
 
 			<section>
@@ -363,7 +367,7 @@ emptyModel =
     , user = Nothing
     }
 
---		
+--
 					</code>
 				</pre>
 
@@ -394,7 +398,6 @@ emptyModel =
 					* The use of "Just"
 				</aside>
 			</section>
-
 
 
 			<!-- Last slide -->
