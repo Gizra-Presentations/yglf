@@ -173,7 +173,143 @@ view model =
         ]
 
 				</code></pre>
-			</section>			
+			</section>
+
+
+			<section>
+				<h3>Compile Error Vs Runtime Mistakes</h3>
+
+				<aside class="notes" data-markdown>
+					* No Runtime errors in Elm
+					* Shift as much runtime mistakes to compile time error
+				</aside>
+			</section>
+
+			<section>
+				<h2>Types 101</h2>
+			</section>
+
+			<!-- Bool type -->
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type Bool = False | True
+					</code>
+				</pre>
+			</section>
+
+			<!-- User type -->
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+--
+
+type alias User =
+    { avatarUrl : String
+    , name : String
+    }
+
+viewAvatar : String
+viewAvatar url =
+    img [ src url ] []
+					</code>
+				</pre>
+			</section>
+
+			<!-- User type Url -->
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type Url = Url String
+
+type alias User =
+    { avatarUrl : Url
+    , name : String
+    }
+
+viewAvatar : Url
+viewAvatar url =
+    img [ src url ] []
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h2>Maybe?</h2>
+			</section>
+
+			<!-- User type Url -->
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type alias User =
+    { avatarUrl : Url
+    , name : String
+    }
+
+emptyUser =
+		{ avatarUrl = Url ""
+		, name = ""
+		}
+
+type alias Model =
+    { activePage : Page
+		, user : User
+		}
+
+emptyModel =
+		{ activePage = Login
+		, user = emptyUser
+		}
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+					* Example without Maybe. But this is wrong.
+				</aside>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type alias Model =
+    { activePage : Page
+		, user : Maybe User
+		}
+
+emptyModel =
+		{ activePage = Login
+		, user = Nothing
+		}
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+					* We know there is no User.
+				</aside>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type alias Model =
+    { activePage : Page
+		, user : Maybe User
+		}
+
+emptyModel =
+		{ activePage = Login
+		, user = Just emptyUser
+		}
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+					* The use of "Just"
+				</aside>
+			</section>
+
+
 
 			<!-- Last slide -->
 			<section data-background="https://cloud.githubusercontent.com/assets/125707/13070800/cf27ec14-d497-11e5-82e3-7cb9c73fe6be.jpg" class="present">
