@@ -54,27 +54,22 @@
 				</span>
 
 				<aside class="notes" data-markdown>
-					* Show, for real, how we approach the hard task of price offers in Gizra
-					* My agenda - open source our knowledge.
-					* Sales process is usually remains in the dark
-					* Same as closed source people, afraid about sharing the code
 				</aside>
 			</section>
 
-			<section data-background="https://cloud.githubusercontent.com/assets/125707/12292817/67ad3814-b9f8-11e5-97ec-b5c201fcf4a3.jpg">
+			<section data-background="https://cloud.githubusercontent.com/assets/125707/15116391/bcacda50-15c8-11e6-828c-c7922362df7f.jpg">
+				<div style="background-color: black; opacity: 0.75; padding: 20px;">
+					<h2>Elm</h2>
+					A different approach to frontend webapps
+				</div>
+
 				<aside class="notes" data-markdown>
-					IT projects fail by default
+					* Let's understand what it solves
+					* Agree or disagree, all JS frameworks have in common use JS
+					* If JS ninja ok
+					* Pragmatic approach: Quickest, cheapest, solid, and keep devs moral
+					* Bash Angular 1. Elm provides better tools to deal
 				</aside>
-			</section>
-
-			<!-- Define success -->
-			<section>
-				<h2>Defintion of succeess</h2>
-				<ul>
-					<li>On Time</li>
-					<li>On Budget</li>
-					<li>Users Are Happy</li>
-				</ul>
 			</section>
 
 			<section>
@@ -212,11 +207,13 @@ type alias User =
 viewAvatar : String
 viewAvatar url =
     img [ src url ] []
+
+
+--
 					</code>
 				</pre>
 			</section>
 
-			<!-- User type Url -->
 			<section>
 				<pre>
 					<code class="elm" data-trim>
@@ -229,7 +226,30 @@ type alias User =
 
 viewAvatar : Url
 viewAvatar url =
-    img [ src url ] []
+    let
+        (Url val) = url
+    in
+        img [ src val ] []
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type Url = Url String
+
+type alias User =
+    { avatarUrl : Url
+    , name : String
+    }
+
+viewAvatar : Url
+viewAvatar (Url val) =
+    img [ src val ] []
+
+
+--		
 					</code>
 				</pre>
 			</section>
