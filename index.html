@@ -170,6 +170,52 @@ view model =
 				</code></pre>
 			</section>
 
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+--
+
+type alias User =
+    { avatarUrl : String
+    , name : String
+    }
+
+viewAvatar : String
+viewAvatar url =
+    img [ src url ] []
+
+
+--
+					</code>
+				</pre>
+				<aside class="notes" data-markdown>
+					* This looks ok
+		    </aside>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+--
+
+type alias User =
+    { avatarUrl : String
+    , name : String
+    }
+
+viewAvatar : String
+viewAvatar url =
+    img [ src url ] []
+
+
+main = viewAvatar "But this isn't a URL!"
+					</code>
+				</pre>
+				<aside class="notes" data-markdown>
+					* This looks ok
+		    </aside>
+			</section>
+
 
 			<section>
 				<h3>Compile Error Vs Runtime Mistakes</h3>
@@ -197,6 +243,18 @@ type Bool = False | True
 			<section>
 				<pre>
 					<code class="elm" data-trim>
+type UserType = Anonymous | Pending Integer | Authenticated String
+					</code>
+				</pre>
+				<aside class="notes" data-markdown>
+					* User type can be either one.
+					* Pending and Authenticated are wrapping a value.
+		    </aside>
+			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
 --
 
 type alias User =
@@ -212,6 +270,9 @@ viewAvatar url =
 --
 					</code>
 				</pre>
+				<aside class="notes" data-markdown>
+					* This looks ok
+		    </aside>
 			</section>
 
 			<section>
@@ -249,13 +310,13 @@ viewAvatar (Url val) =
     img [ src val ] []
 
 
---		
+--
 					</code>
 				</pre>
 			</section>
 
 			<section>
-				<h2>Maybe?</h2>
+				<h2>Maybe values</h2>
 			</section>
 
 			<!-- User type Url -->
@@ -268,19 +329,19 @@ type alias User =
     }
 
 emptyUser =
-		{ avatarUrl = Url ""
-		, name = ""
-		}
+    { avatarUrl = Url ""
+    , name = ""
+    }
 
 type alias Model =
     { activePage : Page
-		, user : User
-		}
+    , user : User
+    }
 
 emptyModel =
-		{ activePage = Login
-		, user = emptyUser
-		}
+    { activePage = Login
+    , user = emptyUser
+    }
 					</code>
 				</pre>
 
@@ -294,13 +355,15 @@ emptyModel =
 					<code class="elm" data-trim>
 type alias Model =
     { activePage : Page
-		, user : Maybe User
-		}
+    , user : Maybe User
+    }
 
 emptyModel =
-		{ activePage = Login
-		, user = Nothing
-		}
+    { activePage = Login
+    , user = Nothing
+    }
+
+--		
 					</code>
 				</pre>
 
@@ -312,15 +375,18 @@ emptyModel =
 			<section>
 				<pre>
 					<code class="elm" data-trim>
+
 type alias Model =
     { activePage : Page
-		, user : Maybe User
-		}
+    , user : Maybe User
+    }
 
 emptyModel =
-		{ activePage = Login
-		, user = Just emptyUser
-		}
+    { activePage = Login
+    , user = Just { name = "Amitai"
+                  , avatarUrl = "https://example.com/avatar"
+                  }
+    }
 					</code>
 				</pre>
 
