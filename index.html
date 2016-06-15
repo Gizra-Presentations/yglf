@@ -45,15 +45,16 @@
 			<!-- About  -->
 			<section data-background="https://cloud.githubusercontent.com/assets/125707/12092123/dd49649a-b303-11e5-9355-e49a3881f5bd.png">
 				<span style="background-color: black; opacity: 0.85; padding: 20px 40px;">
-						<span style="font-family: Abril Fatface; color: #e27058; font-size: 50px;">
-						</span>
-						<span>Amitai Burstein</span>
-						<span class="">
-							// @amitaibu // #TheGizraWay
-						</span>
+					<span style="font-family: Abril Fatface; color: #e27058; font-size: 50px;">
+						gizra
+					</span>
+					<span>// @amitaibu</span>
 				</span>
 
 				<aside class="notes" data-markdown>
+					* Intro
+					* Since beggining of 2016, official US office
+					* Please tweet, makes me feel important
 				</aside>
 			</section>
 
@@ -64,18 +65,22 @@
 				</div>
 
 				<aside class="notes" data-markdown>
-					* Let's understand what it solves
-					* Agree or disagree, all JS frameworks have in common use JS
+					* Build more easily, stable web apps
+					* all JS frameworks have in common use JS
+					* Agree or disagree, but JS is problematic
 					* If JS ninja ok
-					* Pragmatic approach: Quickest, cheapest, solid, and keep devs moral
+					* JS is like getting root access to the server. You have too be very disiplined
+					* Why we have in production: Pragmatic approach - Quickest, cheapest, solid, and keep devs moral
 					* Bash Angular 1. Elm provides better tools to deal
 				</aside>
 			</section>
 
 			<section>
-				<h3>Elm Architecture</h3>
+				<h3>Elm & Elm Architecture</h3>
 				<aside class="notes" data-markdown>
+					* Language: Typed, Immutable, has no side effects, no run time errors
 					* Set of best practices
+					* Framework with its own language. It's very opininated
 					* How to structure your application
 					* How to connect components
 					* Model -> Update -> View
@@ -90,7 +95,8 @@
         </div>
 
 				<aside class="notes" data-markdown>
-					* Saw first time it resonated
+					* Saw first time it resonated with me
+					* Redux taking inspiration from Elm
 					* Angular 1 - where is your state? Router. Services.
 					* Async nature of JS
 					* Condition of your webapp
@@ -111,8 +117,14 @@
 					* Angular 1 site - Save me so many jQuery lines
 					* What made us love it, is what we now hate
 					* If view changes model, chain of actions. Can't control state
+					* Next something that really got me existed. Ready? Ready?
 		    </aside>
       </section>
+
+			<!-- Counter Example -->
+			<section>
+					<img src="https://cloud.githubusercontent.com/assets/125707/9739824/2fcc8cd0-565a-11e5-8024-0d01200773cd.jpg" />
+			</section>
 
 			<section>
 				<pre style="width: 100%;"><code data-trim class>
@@ -145,8 +157,8 @@ type Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update action model =
-    case action of
+update msg model =
+    case msg of
         Decrement ->
             ( model - 1
             , Cmd.none
@@ -168,6 +180,26 @@ view model =
         ]
 
 				</code></pre>
+				<aside class="notes" data-markdown>
+					* Eventhough syntax my look daunting
+					* Boiler code, Show the essence
+					* Msg: Angular1 - what actions can you do on your model?
+					* When I click the button nothing will happen
+					* Update is the brain of webapp, here we have logic
+		    </aside>
+			</section>
+
+			<section>
+				<h2>@todo: replace with gif</h2>
+				<div class="">
+					<img src="https://cloud.githubusercontent.com/assets/125707/16070531/d6f7c3b0-32de-11e6-8dad-f048b92530e8.jpg" alt="" />
+				</div>
+
+				<aside class="notes" data-markdown>
+					* With elm, we can really start thinknig from the data structure level
+					* Elm gives us powerfull tools to model our app
+				</aside>
+
 			</section>
 
 			<section>
@@ -611,7 +643,7 @@ UpdateDataFromServer result ->
 				 <aside class="notes" data-markdown>
 					 * Encourages us to be better developers
 					</aside>
-       </section>			
+       </section>
 
 			<section>
 				<h2>Our evaluation process</h2>
