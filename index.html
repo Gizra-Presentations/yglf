@@ -479,9 +479,65 @@ emptyModel =
 				</aside>
 			</section>
 
+			<!-- Translation -->
 			<section>
 				<img src="http://www.gizra.com/assets/images/posts/elm-i18n/image1.gif" alt="" />
 			</section>
+
+			<section>
+				<pre>
+					<code class="elm" data-trim>
+type Language
+    = English
+    | Spanish
+
+
+type TranslationId
+    = Login
+    | WelcomeBack { name : String }
+
+
+type alias TranslationSet =
+    { english : String
+    , spanish : String
+    }
+
+
+translations : TranslationId -> TranslationSet
+translations id =
+    case id of
+        Login ->
+            { english = "Please login"
+            , spanish = "Por favor haga login"
+            }
+
+        WelcomeBack val ->
+            { english = "Welcome back " ++ val.name
+            , spanish = "Bienvenido " ++ val.name
+            }
+
+
+translate : Language -> TranslationId -> String
+translate lang id =
+    case lang of
+        English ->
+            .english <| translations id
+
+        Spanish ->
+            .spanish <| translations id
+
+					</code>
+				</pre>
+
+				<aside class="notes" data-markdown>
+					* Using webdata, starting with NotAsked
+				</aside>
+			</section>
+
+			<section>
+				<h2>Our evaluation process</h2>
+			</section>
+
 
 			<!-- Timewatch -->
 			<section data-background-video="http://zippy.gfycat.com/ClassicSplendidDikkops.webm" data-background-video-loop>
@@ -541,13 +597,6 @@ emptyModel =
 					* Structured app
 					* A few tests
 					* Travis
-				</aside>
-			</section>
-
-			<section>
-				<img src="http://www.gizra.com/assets/images/posts/elm-i18n/image1.gif" alt="" />
-				<aside class="notes" data-markdown>
-					* Read more one elm-lang and our blog posts
 				</aside>
 			</section>
 
