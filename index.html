@@ -534,6 +534,85 @@ translate lang id =
 				</aside>
 			</section>
 
+
+			<section>
+				<h3>Buisness Logic requires Testing</h3>
+
+				<aside class="notes" data-markdown>
+					* Who writes unit tests in JS?
+					* Who enjoys it?
+					* For the viewers at home, very few raised there hands, can't blame them
+					* Probably the same amount of joy and happiness those guys in the back of
+					Kim Jung Un must be feeling.
+				</aside>
+			</section>
+
+			<!-- Kim Jung Un 1 -->
+			<section data-background="https://cloud.githubusercontent.com/assets/125707/14984664/8020228e-114c-11e6-9db9-e986cc9f8398.jpg">
+
+				<aside class="notes" data-markdown>
+					* Probably the same amount of joy and happiness those guys in the back of
+					Kim Jung Un must be feeling.
+				</aside>
+			</section>
+
+			<!-- Kim Jung Un 2 -->
+			<section data-background="https://cloud.githubusercontent.com/assets/125707/14984664/8020228e-114c-11e6-9db9-e986cc9f8398.jpg">
+         <h2 style="background-color: black; opacity: 0.85; padding: 20px; ">
+						Unit tests
+					</h2>
+
+					<aside class="notes" data-markdown>
+						* What makes unit tests easy Elm
+						* Time to talk about "Pure functions and side effects"
+					</aside>
+       </section>
+
+			 <!-- Side Effects -->
+			 <section>
+				<h2>Pure Functions & Side Effects</h2>
+
+				<aside class="notes" data-markdown>
+					* Elm is a black box with no connection to outside world
+				</aside>
+       </section>
+
+       <section>
+         <pre style="width: 100%;"><code data-trim>
+-- MODEL
+type alias Model = Int
+
+-- UPDATE
+type Action
+ = GetDataFromServer
+ | UpdateDataFromServer Result
+         </code></pre>
+
+			 <aside class="notes" data-markdown>
+          * Simple counter example, data from server
+          * Action - nothing happens by itself
+          * Code not compiled, for simplicity and brevity
+				</aside>
+       </section>
+
+       <section>
+         <pre style="width: 100%;"><code data-trim>
+GetDataFromServer ->
+ ( model, Http.get "https://example.com/api/data" |> Task.map UpdateDataFromServer )
+
+UpdateDataFromServer result ->
+ case result of
+   Ok val ->
+     ( { model = val } , Effects.none )
+   Err msg ->
+     ( model , Effects.none )
+
+         </code></pre>
+				 <aside class="notes" data-markdown>
+					 * Encourages us to be better developers
+					</aside>
+       </section>			
+
 			<section>
 				<h2>Our evaluation process</h2>
 			</section>
