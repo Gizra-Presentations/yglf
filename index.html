@@ -92,7 +92,7 @@
 				<img src="https://cloud.githubusercontent.com/assets/125707/16362318/c296c8e2-3bb4-11e6-841c-d5b0e69c98e6.jpg" alt="" />
 
 				<aside class="notes" data-markdown>
-					* But basically I want to tell you why I love computer.
+					* I guess the world we're leaving in, is probably the reason I love computers so much.
 					* You start your day. Clean console. No surprises. You have full controll.
 				</aside>
 			</section>
@@ -180,13 +180,16 @@
 			<!-- SPA gif -->
 			<section data-background-video="http://zippy.gfycat.com/DefiniteSmugGoral.webm" data-background-video-loop>
 				<aside class="notes" data-markdown>
+					* Nothing fancy, just login to GitHub, and fetch info.
+					* But you can go ahead, after the presentation, and after reading the great Elm guide
+					and learn how to build real apps.
 				</aside>
 			</section>
 
 			<section>
 				<h3>Elm & Elm Architecture</h3>
 				<aside class="notes" data-markdown>
-					* Language: Typed, Immutable, has no side effects, no run time errors
+					* Language: Compiled, Typed, Immutable, has no side effects, no run time errors
 					* Set of best practices
 					* Framework with its own language. It's very opininated
 					* How to structure your application
@@ -749,14 +752,15 @@ update msg model =
        </section>
 
        <section>
-         <pre style="width: 100%;"><code data-trim>
+         <pre style="width: 100%;"><code class="elm" data-trim>
 -- MODEL
 type alias Model = Int
 
 -- UPDATE
-type Action
- = GetDataFromServer
- | UpdateDataFromServer Result
+type Msg
+ = Fetch
+ | FetchSucceed Int
+ | FetchFail Http.Error
          </code></pre>
 
 			 <aside class="notes" data-markdown>
@@ -771,7 +775,7 @@ type Action
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
  case msg of
-   GetFromServer ->
+   Fetch ->
      ( model
      , Task.perform FetchFail FetchSucceed (Http.get "https://api.example.com")
      )
@@ -784,6 +788,7 @@ update msg model =
 
          </code></pre>
 				 <aside class="notes" data-markdown>
+					 * No HTTP happens.
 					 * Encourages us to be better developers
 					</aside>
        </section>
@@ -807,30 +812,18 @@ update msg model =
 
 				<aside class="notes" data-markdown>
 					* Structured app
-					* A few tests
-					* Travis
+					* Travis integration
+					* So, I read somewhere that a good presentation should end with a motif that was used in the beginning.
 				</aside>
 			</section>
 
+			<!-- Cameron Diaz -->
 			<section>
-				<div class="">
-					What about NodeJs?
-				</div>
-				<small>My functional programming journey</small>
+				<img src="https://cloud.githubusercontent.com/assets/125707/16362419/fff3ffe6-3bb6-11e6-84a2-8e457942e999.jpg" class="stretch" />
 
 				<aside class="notes" data-markdown>
-					* I started with Elm
-					* Looked at Symfony as holy grail (decoupled, composition)
-					* Objects immutable, might have state
-				</aside>
-			</section>
-
-			<!-- Yesod -->
-			<section>
-				<img src="https://cloud.githubusercontent.com/assets/125707/15009836/78fd76e6-11f1-11e6-9d3a-355b7098ba22.jpg" alt="" class="stretch"/>
-
-				<aside class="notes" data-markdown>
-					* For more complex sites with have Drupal and NodeJs as proxy server
+					* One of her quotes, and quite incredibly, I feel that it really encapsulats well this session.
+					* I would kiss a frog even if there were no promise of a Prince Charming popping out of it. I love frogs. I'd lick him.
 				</aside>
 			</section>
 
