@@ -571,6 +571,10 @@ emptyModel =
 				</aside>
 			</section>
 
+			<section>
+				<h3>Learn how to re-think with types</h3>
+			</section>
+
 			<!-- Translation -->
 			<section>
 				<img src="http://www.gizra.com/assets/images/posts/elm-i18n/image1.gif" alt="" />
@@ -624,6 +628,55 @@ translate lang id =
 				<aside class="notes" data-markdown>
 					* Using webdata, starting with NotAsked
 				</aside>
+			</section>
+
+			<section>
+				<h2>Not everything is in Types</h2>
+			</section>
+
+			<!-- Counter Example -->
+			<section>
+					<img src="https://cloud.githubusercontent.com/assets/125707/9739824/2fcc8cd0-565a-11e5-8024-0d01200773cd.jpg" />
+			</section>
+
+			<section>
+				<pre style="width: 100%;"><code data-trim class>
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        Decrement ->
+            model - 1
+
+
+
+
+
+        Increment ->
+            model + 1
+
+				</code></pre>
+				<aside class="notes" data-markdown>
+		    </aside>
+			</section>
+
+			<section>
+				<pre style="width: 100%;"><code data-trim class>
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        Decrement ->
+            let
+                newModel =
+                    if model < 1 then 0 else model - 1
+            in
+                newModel
+
+        Increment ->
+            model + 1
+
+				</code></pre>
+				<aside class="notes" data-markdown>
+		    </aside>
 			</section>
 
 
@@ -689,15 +742,19 @@ type Action
 
        <section>
          <pre style="width: 100%;"><code data-trim>
-GetDataFromServer ->
- ( model, Http.get "https://example.com/api/data" |> Task.map UpdateDataFromServer )
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+ case msg of
+   GetFromServer ->
+     ( model
+     , Task.perform FetchFail FetchSucceed (Http.get "https://api.example.com")
+     )
 
-UpdateDataFromServer result ->
- case result of
-   Ok val ->
-     ( { model = val } , Effects.none )
-   Err msg ->
-     ( model , Effects.none )
+   FetchSucceed count ->
+     ( count, Cmd.none)
+
+   FetchFail _ ->
+     ( model, Cmd.none )
 
          </code></pre>
 				 <aside class="notes" data-markdown>
